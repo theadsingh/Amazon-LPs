@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership Principles Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Leadership Principles Quiz</h1>
+    <div id="game-container">
+        <div id="question-container">
+            <p id="question">Question will appear here</p>
+        </div>
+        <div id="options-container">
+            <button class="option-btn" onclick="chooseLP('Ownership')">Ownership</button>
+            <button class="option-btn" onclick="chooseLP('Have backbone; disagree and commit')">Have Backbone; Disagree and Commit</button>
+            <button class="option-btn" onclick="chooseLP('Earn Trust')">Earn Trust</button>
+            <button class="option-btn" onclick="chooseLP('Dive Deep')">Dive Deep</button>
+            <button class="option-btn" onclick="chooseLP('Invent and Simplify')">Invent and Simplify</button>
+            <button class="option-btn" onclick="chooseLP('Deliver Results')">Deliver Results</button>
+            <button class="option-btn" onclick="chooseLP('Customer Obsession')">Customer Obsession</button>
+            <button class="option-btn" onclick="chooseLP('Bias for Action')">Bias for Action</button>
+            <button class="option-btn" onclick="chooseLP('Are Right, A Lot')">Are Right, A Lot</button>
+            <button class="option-btn" onclick="chooseLP('Learn and Be Curious')">Learn and Be Curious</button>
+            <button class="option-btn" onclick="chooseLP('Hire and Develop the Best')">Hire and Develop the Best</button>
+            <button class="option-btn" onclick="chooseLP('Insist on the Highest Standard')">Insist on the Highest Standard</button>
+            <button class="option-btn" onclick="chooseLP('Think Big')">Think Big</button>
+        </div>
+        <div id="next-container">
+            <button id="next-question-btn" onclick="nextQuestion()">Next Question</button>
+        </div>
+        <div id="principle-container">
+            <p id="principle">The principle description will appear here after answering.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
