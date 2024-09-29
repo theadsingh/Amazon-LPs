@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leadership Principle Stories</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .question, .lp-keyword, .story {
+      display: none;
+      text-align: center;
+      font-size: 18px;
+      margin: 20px 0;
+    }
+
+    .story {
+      font-weight: bold;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      button {
+        font-size: 14px;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Leadership Principle Stories</h1>
+    <div class="question" id="question"></div>
+    <div class="lp-keyword" id="lp-keyword"></div>
+    <div class="story" id="story"></div>
+    <button id="next-btn">Start</button>
+  </div>
+
+  <script>
+    const data = [
+      { question: "face a complex problem", lp: "Dive Deep, evaluate metric and data", story: "Early Cancer" },
+      { question: "find root cause of issue", lp: "Dive Deep, evaluate metric and data", story: "Early Cancer" },
+      { question: "in-depth thought analysis", lp: "Dive Deep, evaluate metric and data", story: "Early Cancer" },
+      { question: "in tension ‚Äì tight deadline or resource constriant", lp: "Deliver Results", story: "Komatsu / Facial Rec" },
+      { question: "overcoming unanticipated obstacle", lp: "Deliver Results", story: "Komatsu / Facial Rec" },
+      { question: "exceed expecation", lp: "Deliver Results", story: "Komatsu / Facial Rec" },
+      { question: "Took something significant outsie area", lp: "Ownership, scalable, long term, accept mistakes", story: "Ignition" },
+      { question: "Peer struggling and decided to step in", lp: "Ownership, scalable, long term, accept mistakes", story: "Ignition" },
+      { question: "Calculated risk for speedy decision", lp: "Bias for Action, quick decision", story: "Phable" },
+      { question: "tight deadline to consider all options", lp: "Bias for Action, quick decision", story: "Phable" },
+      { question: "Complex problem but simple solution", lp: "Invent and Simplify", story: "Ignition/Early Cancer" },
+      { question: "diffult interaction with customer", lp: "Customer Obsession, work backward, delight customer", story: "Activa Finance/RTR" },
+      { question: "unjustifiable customer demand which wont address their need", lp: "Customer Obsession, work backward, delight customer", story: "Activa Finance/RTR" },
+      { question: "Strongly disagree manager or peer", lp: "Have Backbone, disagree using data", story: "Phable/Warrant" },
+      { question: "made a mistake (bad decision or bad idea or bad judgement)", lp: "Are Right A Lot, ambiguity", story: "Ubitricity/Activa Finance" },
+      { question: "communicate change in direction", lp: "Earn Trust, accept feedback", story: "RTR/Warrant" }
+    ];
+
+    let usedIndices = [];
+    let currentStep = 0;
+    let currentData;
+
+    document.getElementById('next-btn').addEventListener('click', function() {
+      if (currentStep === 0) {
+        showRandomQuestion();
+      } else if (currentStep === 1) {
+        showLPAndKeyword();
+      } else if (currentStep === 2) {
+        showStory();
+      }
+    });
+
+    function showRandomQuestion() {
+      if (usedIndices.length === data.length) {
+        alert("All questions exhausted. Restarting.");
+        usedIndices = [];
+      }
+
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * data.length);
+      } while (usedIndices.includes(randomIndex));
+
+      usedIndices.push(randomIndex);
+      currentData = data[randomIndex];
+
+      document.getElementById('question').textContent = currentData.question;
+      document.getElementById('question').style.display = "block";
+      document.getElementById('lp-keyword').style.display = "none";
+      document.getElementById('story').style.display = "none";
+
+      document.getElementById('next-btn').textContent = "Show LP & Keyword";
+      currentStep = 1;
+    }
+
+    function showLPAndKeyword() {
+      document.getElementById('lp-keyword').textContent = currentData.lp;
+      document.getElementById('lp-keyword').style.display = "block";
+      document.getElementById('next-btn').textContent = "Show Story";
+      currentStep = 2;
+    }
+
+    function showStory() {
+      document.getElementById('story').textContent = currentData.story;
+      document.getElementById('story').style.display = "block";
+      document.getElementById('next-btn').textContent = "Next Question";
+      currentStep = 0;
+    }
+  </script>
+  
+</body>
+</html>
